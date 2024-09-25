@@ -1,0 +1,416 @@
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import FontAwesome for icons */
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--txt); /* Default text color */
+}
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Light theme colors */
+.light-theme {
+    --background: url("https://tailwindcss.com/_next/static/media/hero@75.b2469a49.jpg");
+    --primary: #F8FAFC;
+    --secondary: #0F172A;
+    --txt: #000;
+    --heading: #2dd9fe;
+    --btn-color: #fff;
+    --btn-background: #5f99be;
+    --search-background: #000;
+    --c: #2dd9fe;
+    --hover_bg_change: backdrop-filter:6px; /* Example of a custom property */
+}
+
+/* Dark theme colors */
+.dark-theme {
+    --background: url("https://tailwindcss.com/_next/static/media/hero-dark@90.dba36cdf.jpg");
+    --primary: rgb(30,41,59);
+    --secondary: #D5DDF0;
+    --txt: #fff;
+    --heading: #4666FF;
+    --btn-color: #000;
+    --btn-background: #5f99be;
+    --search-background: #18181b;
+}
+
+/* Body background and layout */
+body {
+    background: var(--background);
+    background-size: cover; /* Cover the entire background area */
+    background-position: center; /* Center the background image */
+    min-height: 100vh; /* Ensure full viewport height */
+    margin: 0;
+}
+
+/* Container styles */
+.container {
+    width: 100% !important; /* Ensure container takes full width */
+}
+
+/* Navigation styles */
+nav {
+    height: 70px; /* Fixed height for navigation bar */
+    backdrop-filter: blur(4px); 
+    border-bottom: 0.1px solid grey; /* Border at the bottom of the nav */
+}
+
+/* Heading text color */
+.heading {
+    color: var(--heading);
+}
+
+/* Navigation list styles */
+nav ul {
+    min-width: 378px; /* Minimum width for navigation list */
+}
+
+/* Dropdown menu styles */
+.dropdown-li {
+    position: relative;
+}
+
+ul li ul {
+    visibility: hidden; /* Hide dropdown by default */
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    display: none; /* Do not display dropdown by default */
+    background: var(--primary);
+}
+
+.show-dropdown {
+    visibility: visible; /* Show dropdown when active */
+    opacity: 1;
+    display: block;
+    min-width: 250px; /* Minimum width of dropdown */
+    text-align: left;
+    padding-top: 20px;
+    box-shadow: 0px 3px 5px -1px var(--heading); /* Shadow for dropdown */
+}
+
+.down-arrow-icon {
+    height: 16px;
+    width: 16px;
+    padding-top: 2px;
+    transition: 0.2s ease-in-out; /* Smooth transition for rotation */
+}
+
+.down-arrow-icon > path {
+    color: var(--heading) !important;
+}
+
+.down-arrow-icon-active {
+    transform: rotate(-180deg); /* Rotate arrow when active */
+}
+
+/* Dropdown container styles */
+.dropdown {
+    min-height: 10vh;
+    height: 50vh;
+    overflow: auto; /* Allow scrolling if content overflows */
+    top: 30px;
+}
+
+/* Dropdown item styles */
+ul li ul li {
+    clear: both;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    border-style: none;
+}
+
+ul li ul li a:hover {
+    padding-left: 10px; /* Add padding on hover */
+    border-left: 2px solid #3ca0e7; /* Add border on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Flag icon styles */
+.flags {
+    height: 30px;
+    width: 30px;
+}
+
+/* Hamburger menu styles */
+.ham-burger {
+    display: none; /* Hidden by default */
+    z-index: 100; /* Ensure it is above other content */
+    cursor: pointer;
+}
+
+.ham-burger:hover {
+    cursor: pointer;
+}
+
+.ham-open .line-1 {
+    transform: translateY(8px) rotate(45deg); /* Rotate first line */
+}
+
+.ham-open .line-2 {
+    width: 0; /* Hide second line */
+}
+
+.ham-open .line-3 {
+    transform: translateY(-7px) rotate(-45deg); /* Rotate third line */
+}
+
+/* Hamburger lines styles */
+.lines {
+    width: 30px;
+    height: 3px;
+    background: var(--heading);
+    display: block;
+    margin: 5px 0;
+    transition: transform 1s, width 0.5s;
+}
+
+/* Checkbox styles for theme switcher */
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-label {
+    background-color: #111;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-moon { color: #f1c40f; } /* Moon icon color */
+.fa-sun { color: #f39c12; } /* Sun icon color */
+
+.checkbox-label .ball {
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear; /* Smooth transition for ball movement */
+}
+
+.checkbox:checked + .checkbox-label .ball {
+    transform: translateX(24px); /* Move ball when checkbox is checked */
+}
+
+/* Search box styles */
+.search-box {
+    background: var(--primary);
+    height: 50px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.search-box:focus {
+    outline: none;
+    border: 2px solid var(--btn-background); /* Border on focus */
+}
+
+/* Button and input margins */
+button, input, optgroup, select, textarea {
+    margin-top: 50px;
+}
+
+/* Button styles */
+.btn {
+    background-color: var(--heading);
+    color: var(--btn-color);
+    width: 130.51px;
+    height: 50px;
+    border-top-right-radius: 4px;
+    margin-left: -2px;
+    border-bottom-right-radius: 4px;
+}
+
+/* Pagination button styles */
+.pagination-btn {
+    background-color: var(--heading);
+    color: var(--btn-color);
+    width: 130.51px;
+    height: 50px;
+    border-radius: 34px;
+}
+
+/* Card styles */
+.everything-card {
+    margin: 0 auto;
+    width: 390px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 
+        0 0 10px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.everything-card:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    background: var(--primary);
+    box-shadow: 0 0 11px grey; /* Shadow on hover */
+}
+
+/* Card image styles */
+.everything-card-img {
+    width: 280px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+/* Transition shadow card styles */
+.transition-shadow {
+    width: 390px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 
+        0 0 10px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.transition-shadow:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    background: var(--primary);
+    box-shadow: 0 0 11px grey; /* Shadow on hover */
+}
+
+/* Title font style */
+.title {
+    font-family: "Freeman", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+/* Footer styles */
+footer {
+    color: var(--btn-color);
+    background: var(--heading);
+}
+
+/* Loader styles */
+.loader-container {
+    height: 100vh; /* Full viewport height */
+    padding: 0; 
+    align-items: center; /* Center the loader vertically */
+}
+
+.loader {
+    width: 50px;
+    aspect-ratio: 1; /* Maintain a square aspect ratio */
+    display: grid;
+    color: var(--heading);
+    background: radial-gradient(farthest-side, currentColor calc(100% - 6px), #0000 calc(100% - 5px) 0);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 13px), #000 calc(100% - 12px));
+    border-radius: 50%;
+    animation: l19 2s infinite linear; /* Infinite rotation animation */
+}
+
+.loader::before,
+.loader::after {    
+    content: "";
+    grid-area: 1/1;
+    background:
+        linear-gradient(currentColor 0 0) center,
+        linear-gradient(currentColor 0 0) center;
+    background-size: 100% 10px, 10px 100%;
+    background-repeat: no-repeat;
+}
+
+.loader::after {
+    transform: rotate(45deg); /* Rotate for effect */
+}
+
+@keyframes l19 { 
+    100% { transform: rotate(1turn) } /* Rotate loader */
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .cards {
+        place-items: center; /* Center cards */
+    }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 689px) {
+    nav {
+        justify-content: space-between !important; /* Space out nav items */
+        padding: 0 5% !important; /* Adjust padding */
+    }
+}
+
+@media (max-width: 689px) {
+    .btn {
+        width: 80px;
+        height: 40px;
+    }
+
+    .search-box {
+        height: 39px;
+        width: 70%; /* Adjust width of search box */
+    }
+
+    .ham-burger {
+        display: block; /* Show hamburger menu */
+    }
+
+    nav ul {
+        display: none; /* Hide nav list by default */
+        flex-direction: column; /* Stack nav items */
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--primary);
+        z-index: 1; /* Ensure above other content */
+        padding: 25% 10%;
+        transition: 0.3s; /* Smooth transition for menu visibility */
+    }
+
+    nav ul.active {
+        left: 0;
+        display: flex; /* Show nav list when active */
+    }
+
+    .everything-card {
+        width: 350px; /* Adjust card width */
+    }
+}
+
+@media (max-width: 480px) {
+    .everything-card {
+        width: 90%; /* Adjust card width */
+    }
+}
+
+/* Ensure images fit within their containers */
+img {
+    max-width: 100%;
+    height: auto;
+}
