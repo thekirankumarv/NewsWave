@@ -22,6 +22,7 @@ To run this project locally, you need to have Node.js installed. Follow these st
 2. **Create a `.env` file**:
    - You will need to add your API key for the project. To obtain an API key, create a profile at [gnews.io](https://gnews.io).
    - Create a `.env` file in the root directory and add the following line:
+     
      ```
      REACT_APP_API_KEY=your_api_key_here
      ```
