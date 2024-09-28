@@ -15,8 +15,8 @@ To run this project locally, you need to have Node.js installed. Follow these st
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/newswave.git
-   cd newswave
+   git clone https://github.com/thekirankumarv/NewsWave.git
+   cd NewsWave
    ```
 
 2. **Create a `.env` file**:
